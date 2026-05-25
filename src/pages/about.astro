@@ -1,0 +1,227 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="About — Ralf Tsai"
+  description="About Ralf Tsai, an oceanography graduate student, environmental educator, and creator of If No Plastic."
+>
+  <main class="page">
+    <section class="about-hero">
+     <img src="/about-profile.jpg" alt="Portrait of Chun-Hung Tsai at the Institute of Oceanography" />
+
+      <div>
+        <p class="kicker">About</p>
+        <h1>Sustainability, and stories that connect people with the world around them.</h1>
+
+        <p>
+          I’m Chun-Hung Tsai, also known as Ralf, from Kaohsiung, Taiwan. I studied
+          Applied Chemistry at National Pingtung University, with a minor in the Applied
+          Biotechnology Credit Program, and received multiple academic excellence awards during my undergraduate years.
+        </p>
+
+        <p>
+          My academic path later led me across disciplines to the Institute of Oceanography
+          at National Taiwan University. My academic background began in chemistry and gradually
+          led me into oceanography, where I focus on environmental change. I enjoy turning
+          complex scientific information into clear, meaningful stories that can be understood
+          by broader audiences.
+        </p>
+
+        <p>
+          Beyond research, I care deeply about environmental education. Through
+          <strong>@Ifnoplastic.tw （如果無塑）</strong>, I document sustainability practices, ocean-related
+          issues, vegetarian living, campus observations, and small actions that can reconnect
+          people with the environment.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>What I Do</h2>
+
+      <ul class="what-i-do">
+        <li>
+          <strong>Leadership & Collaboration</strong><br />
+          I previously served as President of the Chongde Volunteer Club and Vice President
+          of the Department Student Association, where I developed strengths in teamwork,
+          communication, and cross-disciplinary coordination.
+        </li>
+
+        <li>
+          <strong>Research & Professional Experience</strong><br />
+          I have interned in both NGO and industry settings, including work related to local
+          revitalization and an internship at TCI Co., Ltd., which strengthened my ability
+          to connect academic research with real-world practice.
+        </li>
+
+        <li>
+          <strong>International Engagement</strong><br />
+          I currently serve as a board member of the Sakura Science Program, a science exchange
+          initiative under Japan Science and Technology Agency (JST).
+        </li>
+      </ul>
+
+      <figure class="feature-image">
+        <img src="/altruism-award.jpg" alt="Ralf Tsai receiving an award at National Taiwan University commencement" />
+        <figcaption>
+          Honored with the Altruism Award of the College of Science at National Taiwan University upon graduation.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="section">
+      <h2>My Interests</h2>
+
+      <p>
+        I’m drawn to the kinds of experiences that make life feel observant, reflective, and alive.
+        I enjoy photography, travel, good food, reading, and writing—especially Chinese prose.
+        In daily life, I also enjoy swimming and yoga, and recently I’ve been learning to skateboard.
+      </p>
+
+      <p>
+        Many of the things I love have one thing in common: they help me notice the world more carefully.
+        Whether it is through a camera lens, a quiet paragraph, a journey to a new place, or the rhythm
+        of movement in water, I value moments that slow me down and bring me closer to what is real.
+      </p>
+
+      <figure class="feature-image">
+        <img src="/sea.jpg" alt="The sea near dusk" />
+        <figcaption>
+          My favorite moment is the sea just before evening—quiet, open, and full of space to think.
+        </figcaption>
+      </figure>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .page {
+    display: grid;
+    gap: 64px;
+  }
+
+  .about-hero {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+.about-hero img {
+  /* About 頁照片尺寸：想更大就改這兩個 */
+  width: 200px;
+  height: 200px;
+
+  /* cover = 裁切成固定比例；適合頭像與人物照 */
+  object-fit: cover;
+
+  /* 調整裁切位置：
+     center = 中央
+     top = 臉部偏上時可用
+     50% 35% = 更精準控制水平/垂直位置 */
+  object-position: center;
+
+  /* 圓角方形風格，像質感個人網站 */
+  border-radius: 34px;
+
+  border: 5px solid white;
+  box-shadow: 0 22px 52px rgba(26, 39, 68, 0.14);
+}
+
+  .kicker {
+    margin: 0 0 10px;
+    color: #6c88ad;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0 0 20px;
+    color: #1a2744;
+    font-size: clamp(30px, 4vw, 50px);
+    line-height: 1.05;
+    letter-spacing: -0.055em;
+    max-width: 760px;
+  }
+
+  h2 {
+    margin: 0 0 18px;
+    color: #1a2744;
+    font-size: 26px;
+    letter-spacing: -0.035em;
+  }
+
+  p {
+    margin: 0 0 16px;
+    color: rgba(26, 39, 68, 0.72);
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  strong {
+    color: #1a2744;
+  }
+
+  .section {
+    display: grid;
+    gap: 14px;
+  }
+
+  .what-i-do {
+    margin: 0;
+    padding-left: 1.25rem;
+    display: grid;
+    gap: 18px;
+    color: rgba(26, 39, 68, 0.72);
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  .what-i-do li::marker {
+    color: #6c88ad;
+  }
+
+  .feature-image {
+    margin: 14px 0 0;
+    display: grid;
+    gap: 10px;
+  }
+
+  .feature-image img {
+    width: 100%;
+    border-radius: 26px;
+    display: block;
+    border: 1px solid rgba(168, 200, 240, 0.5);
+    box-shadow: 0 18px 46px rgba(26, 39, 68, 0.08);
+  }
+
+  figcaption {
+    color: rgba(26, 39, 68, 0.52);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  @media screen and (max-width: 720px) {
+    .about-hero {
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+
+    .about-hero img {
+      width: 150px;
+      height: 150px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 10vw, 30px);
+    }
+
+    p,
+    .what-i-do {
+      font-size: 18px;
+    }
+  }
+</style>

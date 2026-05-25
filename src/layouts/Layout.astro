@@ -1,23 +1,179 @@
+---
+const {
+  title = "Ralf Tsai",
+  description = "Personal website of Chun-Hung Tsai.",
+} = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/penguin-icon.png" />
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand" href="/" aria-label="Ralf Tsai Home">
+          <img src="/penguin-icon.png" alt="Ralf Tsai icon" />
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/">Home</a>
+          <a href="/blog">Blog</a>
+          <a href="/links">Links</a>
+          <a href="/about">About</a>
+        </nav>
+      </header>
+
+      <slot />
+
+      <footer class="site-footer">
+        <div class="footer-links">
+          <a href="/blog">Blog</a>
+          <a href="/about">About</a>
+          <a href="/links">Links</a>
+          <a href="https://www.linkedin.com/in/hungtsai0223/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://www.instagram.com/ifnoplastic.tw/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.dcard.tw/@ralfwu0330" target="_blank" rel="noopener noreferrer">Dcard</a>
+        </div>
+
+        <p>© Chun-Hung Tsai. All rights reserved.</p>
+      </footer>
+    </div>
+  </body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: #fbfcf8;
+    color: #1a2744;
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", "Noto Sans TC", "PingFang TC", sans-serif;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  .site-shell {
+    width: min(100% - 48px, 960px);
+    margin: 0 auto;
+    padding: 34px 0 46px;
+  }
+
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 86px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+   .brand img {
+  /* 左上角 logo 尺寸：想更大就調 width / height */
+  width: 70px;
+  height: 70px;
+
+  /* contain = 完整顯示 logo，不裁切 */
+  object-fit: contain;
+
+  /* 方形圓角：0px 是完全方形，16px 是柔和圓角 */
+  border-radius: 14px;
+
+  /* logo 背景色：你的粉霧藍 */
+  background: #a8c8f0;
+
+  /* 內距：讓 logo 不會貼邊 */
+  padding: 6px;
+
+  /* 陰影：想更簡潔可刪掉 */
+  box-shadow: 0 10px 24px rgba(26, 39, 68, 0.08);
+}
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: rgba(26, 39, 68, 0.62);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .nav-links a:hover {
+    color: #1a2744;
+  }
+
+  .site-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 92px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(26, 39, 68, 0.12);
+    color: rgba(26, 39, 68, 0.56);
+    font-size: 14px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    color: #1a2744;
+  }
+
+  .site-footer p {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 720px) {
+    .site-shell {
+      width: min(100% - 30px, 960px);
+      padding-top: 22px;
+    }
+
+    .site-header {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 58px;
+    }
+
+    .nav-links {
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .site-footer {
+      flex-direction: column;
+    }
+  }
 </style>

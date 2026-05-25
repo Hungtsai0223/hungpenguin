@@ -1,0 +1,180 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const posts = [
+  {
+    title: "Dcard 創作者&屏東板板主｜左旋葡萄糖",
+    source: "Dcard",
+    date: "Ongoing",
+    description:
+      "Essays, campus observations, travel reflections, and creator works published under the profile 左旋葡萄糖.",
+    url: "https://www.dcard.tw/@ralfwu0330",
+    tags: ["Dcard", "Creator", "Writing"],
+  },
+  {
+    title: "臺北不是我的家，他告訴要學會愛自己…",
+    source: "Medium",
+    date: "Oct 29, 2023",
+    description:
+      "A personal essay about living in Taipei, learning to breathe again, and finding a gentler way to relate to oneself.",
+    url: "https://medium.com/@hungtsai/%E8%87%BA%E5%8C%97%E4%B8%8D%E6%98%AF%E6%88%91%E7%9A%84%E5%AE%B6-%E4%BB%96%E5%91%8A%E8%A8%B4%E8%A6%81%E5%AD%B8%E6%9C%83%E6%84%9B%E8%87%AA%E5%B7%B1-cec14d26ac51",
+    tags: ["Essay", "Life", "Taipei"],
+  },
+  {
+    title: "池上好好，關於打工換宿這件事…",
+    source: "Medium",
+    date: "Feb 8, 2023",
+    description:
+      "A reflective travel essay about Chishang, work exchange, landscape, and the emotional texture of place.",
+    url: "https://medium.com/@hungtsai/%E6%B1%A0%E4%B8%8A%E5%A5%BD%E5%A5%BD-%E9%97%9C%E6%96%BC%E6%89%93%E5%B7%A5%E6%8F%9B%E5%AE%BF%E9%80%99%E4%BB%B6%E4%BA%8B-57fb93b312d5",
+    tags: ["Travel", "Writing", "Taitung"],
+  },
+ 
+
+];
+---
+
+<Layout
+  title="Blog — Ralf Tsai"
+  description="Writing portfolio of Ralf Tsai, including Medium essays and Dcard creator works."
+>
+  <main class="blog-page">
+    <section class="blog-hero">
+      <p class="kicker">Blog</p>
+      <h1>Writing, field notes, and reflections.</h1>
+      <p>
+        A collection of essays and public writing across Medium and Dcard — from ocean research
+        and graduate school to travel, education, sustainability, and life in Taiwan.
+      </p>
+    </section>
+
+    <section class="post-list">
+      {posts.map((post) => (
+        <a class="post" href={post.url} target="_blank" rel="noopener noreferrer">
+          <div class="post-main">
+            <div class="meta">
+              <span>{post.source}</span>
+              <span>{post.date}</span>
+            </div>
+
+            <h2>{post.title}</h2>
+            <p>{post.description}</p>
+
+            <div class="tags">
+              {post.tags.map((tag) => <span>{tag}</span>)}
+            </div>
+          </div>
+
+          <span class="arrow">↗</span>
+        </a>
+      ))}
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .blog-page {
+    display: grid;
+    gap: 44px;
+  }
+
+  .blog-hero {
+    max-width: 760px;
+  }
+
+  .kicker {
+    margin: 0 0 10px;
+    color: #6c88ad;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(40px, 7vw, 60px);
+    line-height: 1.03;
+    letter-spacing: -0.055em;
+  }
+
+  .blog-hero p {
+    margin: 18px 0 0;
+    color: rgba(26, 39, 68, 0.68);
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  .post-list {
+    display: grid;
+    gap: 24px;
+  }
+
+  .post {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 18px;
+    padding: 22px;
+    border: 1px solid rgba(168, 200, 240, 0.65);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.82);
+    text-decoration: none;
+    box-shadow: 0 18px 46px rgba(26, 39, 68, 0.055);
+    transition:
+      transform 0.18s ease,
+      box-shadow 0.18s ease,
+      border-color 0.18s ease;
+  }
+
+  .post:hover {
+    transform: translateY(-3px);
+    border-color: #a8c8f0;
+    box-shadow: 0 24px 56px rgba(26, 39, 68, 0.1);
+  }
+
+  .meta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    color: #6c88ad;
+    font-size: px;
+    font-weight: 800;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 22px;
+    letter-spacing: -0.035em;
+  }
+
+  .post p {
+    margin: 8px 0 0;
+    color: rgba(26, 39, 68, 0.64);
+    font-size: 15.5px;
+    line-height: 1.68;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .tags span {
+    display: inline-flex;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: rgba(168, 200, 240, 0.34);
+    color: rgba(26, 39, 68, 0.72);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .arrow {
+    color: #6c88ad;
+    font-size: 22px;
+    font-weight: 800;
+  }
+</style>
