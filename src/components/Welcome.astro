@@ -17,40 +17,39 @@
 
       <h1>I'm Ralf</h1>
 
-    <p class="intro">
-  Bridging ocean science, chemistry, and sustainability communication through <strong>如果無塑</strong>.
-</p>
+      <p class="intro">
+        Bridging ocean science, chemistry, and sustainability.
+      </p>
+
+      <p class="subintro">
+        Researcher, storyteller, and creator of <strong>如果無塑</strong>.
+      </p>
     </div>
   </section>
-
-
 </main>
 
 <style>
   .home {
-    /* 首頁整體區塊 */
     position: relative;
     display: grid;
-    gap: 72px;
+
+    /* 首頁區塊之間的距離 */
+    gap: 64px;
+
     min-height: 72vh;
     z-index: 1;
   }
 
-  /* 讓 header / footer 不會被背景影片蓋住 */
   :global(.site-header),
   :global(.site-footer) {
     position: relative;
     z-index: 5;
   }
 
-  /* 背景影片 */
   .video-bg {
     position: fixed;
     inset: 0;
-
-    /* 不要用負值，否則會被 body 背景蓋掉 */
     z-index: 0;
-
     overflow: hidden;
     pointer-events: none;
   }
@@ -60,44 +59,34 @@
     height: 100%;
     object-fit: cover;
 
-    /* 影片可見度：越高越明顯；建議 0.28–0.45 */
-    opacity: 1.28;
+    /* 桌機版影片存在感 */
+    opacity: 0.28;
 
-    /* 影片質感調整：
-       brightness 亮度
-       contrast 對比
-       saturate 飽和度
-       blur 模糊程度 */
-    filter: brightness(0.82) contrast(0.9) saturate(0.7) blur(0.2px);
+    /* 不加 blur，比較不吃效能 */
+    filter: brightness(0.88) contrast(0.9) saturate(0.72);
   }
 
-  /* 影片上方遮罩 */
   .video-overlay {
     position: fixed;
     inset: 0;
     z-index: 1;
     pointer-events: none;
 
-    /* 這裡控制整體霧面感：
-       rgba 最後一個數字越高，影片越淡
-       想讓影片更明顯：0.68 改 0.55
-       想讓文字更清楚：0.68 改 0.75 */
     background:
       linear-gradient(
         90deg,
-        rgba(251, 252, 248, 0.82) 0%,
-        rgba(251, 252, 248, 0.70) 48%,
-        rgba(251, 252, 248, 0.62) 100%
+        rgba(251, 252, 248, 0.86) 0%,
+        rgba(251, 252, 248, 0.76) 48%,
+        rgba(251, 252, 248, 0.68) 100%
       ),
       radial-gradient(
         circle at 22% 20%,
-        rgba(168, 200, 240, 0.26),
+        rgba(168, 200, 240, 0.24),
         transparent 36%
       );
   }
 
-  .hero,
-  .brief {
+  .hero {
     position: relative;
     z-index: 2;
   }
@@ -105,26 +94,24 @@
   .hero {
     display: grid;
 
-    /* 左欄寬度：要跟頭貼大小接近 */
-    grid-template-columns: 210px 1fr;
-
-    /* 頭貼與文字距離 */
-    gap: 46px;
-
+    /* 桌機版：左照片、右文字 */
+    grid-template-columns: 230px 1fr;
+    gap: 52px;
     align-items: center;
+
     margin-top: 24px;
   }
 
   .avatar {
-    /* 首頁頭貼尺寸：想更大就調這兩個 */
-    width: 210px;
-    height: 210px;
+    /* 桌機版首頁頭貼尺寸 */
+    width: 230px;
+    height: 230px;
 
     object-fit: cover;
     object-position: center;
-    border-radius: 999px;
 
-    border: 5px solid rgba(255, 255, 255, 0.9);
+    border-radius: 999px;
+    border: 5px solid rgba(255, 255, 255, 0.92);
     box-shadow: 0 24px 58px rgba(26, 39, 68, 0.14);
   }
 
@@ -132,22 +119,22 @@
     margin: 0 0 10px;
     color: #6c88ad;
 
-    /* Hey! 字體大小在這裡調整 */
+    /* Hey! 字體大小 */
     font-size: 24px;
 
-    font-weight: 700;
+    font-weight: 750;
   }
 
   h1 {
     margin: 0;
     color: #1a2744;
 
-    /* I'm Ralf 字體大小在這裡調整 */
-    font-size: clamp(56px, 8vw, 88px);
+    /* I'm Ralf 字體大小 */
+    font-size: clamp(58px, 8vw, 88px);
 
     line-height: 1;
     letter-spacing: -0.055em;
-    font-weight: 800;
+    font-weight: 850;
   }
 
   .intro {
@@ -161,45 +148,128 @@
     line-height: 1.65;
   }
 
-  .intro strong {
+  .subintro {
+    max-width: 640px;
+    margin: 10px 0 0;
+    color: rgba(26, 39, 68, 0.58);
+
+    /* 第二行補充文字大小 */
+    font-size: 18px;
+
+    line-height: 1.65;
+  }
+
+  .intro strong,
+  .subintro strong {
     color: #1a2744;
-    font-weight: 800;
+    font-weight: 850;
   }
 
-  .brief {
-    max-width: 720px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(26, 39, 68, 0.12);
-  }
-
-
-
+  /* 手機版優化 */
   @media screen and (max-width: 720px) {
+    .home {
+      /* 手機版不要讓區塊距離太散 */
+      gap: 42px;
+      min-height: auto;
+    }
+
     .hero {
       grid-template-columns: 1fr;
-      gap: 24px;
+
+      /* 手機版照片和文字之間的距離 */
+      gap: 30px;
+
+      /* 手機版整體置中 */
+      justify-items: center;
+      text-align: left;
+
+      /* 手機版上方距離，不要太空 */
+      margin-top: 18px;
     }
 
     .avatar {
-      width: 150px;
-      height: 150px;
+      /* 手機版頭貼尺寸 */
+      width: min(78vw, 300px);
+      height: min(78vw, 300px);
+
+      /* 手機版頭貼更有主視覺感 */
+      border-width: 6px;
+      box-shadow: 0 28px 64px rgba(26, 39, 68, 0.16);
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: 520px;
+      padding: 0 22px;
+      box-sizing: border-box;
+    }
+
+    .kicker {
+      /* 手機版 Hey! 字體 */
+      font-size: 28px;
+      margin-bottom: 8px;
     }
 
     h1 {
-      font-size: clamp(44px, 14vw, 64px);
+      /* 手機版 I'm Ralf 字體 */
+      font-size: clamp(56px, 17vw, 82px);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
     }
 
     .intro {
-      font-size: 18px;
+      /* 手機版 intro 文字大小 */
+      margin-top: 22px;
+      font-size: 20px;
+      line-height: 1.55;
+      max-width: 100%;
+    }
+
+    .subintro {
+      margin-top: 8px;
+      font-size: 16.5px;
+      line-height: 1.65;
+      max-width: 100%;
     }
 
     .video-bg video {
-      /* 手機版影片淡一點，避免太亂 */
-      opacity: 0.28;
+      /* 手機版背景影片淡一點，避免搶文字 */
+      opacity: 10;
+      filter: brightness(0.92) contrast(0.9) saturate(0.65);
     }
 
     .video-overlay {
-      background: rgba(251, 252, 248, 0.78);
+      background:
+        linear-gradient(
+          180deg,
+          rgba(251, 252, 248, 0.9) 0%,
+          rgba(251, 252, 248, 0.8) 52%,
+          rgba(251, 252, 248, 0.88) 100%
+        );
+    }
+  }
+
+  /* 更小手機，例如 iPhone SE */
+  @media screen and (max-width: 430px) {
+    .avatar {
+      width: min(82vw, 280px);
+      height: min(82vw, 280px);
+    }
+
+    .kicker {
+      font-size: 28px;
+    }
+
+    h1 {
+      font-size: clamp(56px, 17vw, 76px);
+    }
+
+    .intro {
+      font-size: 19.5px;
+    }
+
+    .subintro {
+      font-size: 16px;
     }
   }
 </style>
