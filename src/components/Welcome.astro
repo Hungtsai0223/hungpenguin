@@ -1,13 +1,9 @@
 <main class="home">
-  <!-- 背景影片：影片檔請放在 public/ocean-bg.mp4 -->
-  <div class="video-bg" aria-hidden="true">
-    <video autoplay muted loop playsinline preload="auto">
-      <source src="/ocean-bg.mp4" type="video/mp4" />
-    </video>
-  </div>
+  <!-- 背景圖片：請放在 public/home-bg.jpg -->
+  <div class="home-bg" aria-hidden="true"></div>
 
-  <!-- 霧面遮罩：避免影片太搶眼、讓文字更清楚 -->
-  <div class="video-overlay" aria-hidden="true"></div>
+  <!-- 霧面遮罩：讓背景圖變淡，避免搶走文字焦點 -->
+  <div class="home-overlay" aria-hidden="true"></div>
 
   <section class="hero">
     <img class="avatar" src="/profile.jpg" alt="Portrait of Ralf Tsai" />
@@ -40,48 +36,49 @@
     z-index: 1;
   }
 
+  /* 讓 header / footer 永遠在背景圖上方 */
   :global(.site-header),
   :global(.site-footer) {
     position: relative;
     z-index: 5;
   }
 
-  .video-bg {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-  }
+  .home-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
 
-  .video-bg video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  /* 使用 public/sea.jpg 作為首頁背景 */
+  background-image: url("/sea.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-    /* 桌機版影片存在感 */
-    opacity: 0.28;
+  opacity: 10;
+  filter: brightness(0.9) contrast(0.88) saturate(0.72);
+}
 
-    /* 不加 blur，比較不吃效能 */
-    filter: brightness(0.88) contrast(0.9) saturate(0.72);
-  }
-
-  .video-overlay {
+  /* 背景上方霧面遮罩 */
+  .home-overlay {
     position: fixed;
     inset: 0;
     z-index: 1;
     pointer-events: none;
 
+    /* 遮罩透明度：
+       rgba 最後一個數字越高，背景越淡、文字越清楚
+       想背景更明顯：0.88 / 0.8 / 0.74 數字都調低一點 */
     background:
       linear-gradient(
         90deg,
-        rgba(251, 252, 248, 0.86) 0%,
-        rgba(251, 252, 248, 0.76) 48%,
-        rgba(251, 252, 248, 0.68) 100%
+        rgba(251, 252, 248, 0.88) 0%,
+        rgba(251, 252, 248, 0.8) 48%,
+        rgba(251, 252, 248, 0.74) 100%
       ),
       radial-gradient(
-        circle at 22% 20%,
-        rgba(168, 200, 240, 0.24),
+        circle at 20% 20%,
+        rgba(168, 200, 240, 0.22),
         transparent 36%
       );
   }
@@ -89,16 +86,16 @@
   .hero {
     position: relative;
     z-index: 2;
-  }
 
-  .hero {
     display: grid;
 
     /* 桌機版：左照片、右文字 */
     grid-template-columns: 230px 1fr;
-    gap: 52px;
-    align-items: center;
 
+    /* 頭貼和文字之間的距離 */
+    gap: 52px;
+
+    align-items: center;
     margin-top: 24px;
   }
 
@@ -140,9 +137,9 @@
   .intro {
     max-width: 640px;
     margin: 22px 0 0;
-    color: rgba(26, 39, 68, 0.72);
+    color: rgba(26, 39, 68, 0.74);
 
-    /* 首頁介紹文字大小 */
+    /* 第一行介紹文字大小 */
     font-size: 21px;
 
     line-height: 1.65;
@@ -168,7 +165,6 @@
   /* 手機版優化 */
   @media screen and (max-width: 720px) {
     .home {
-      /* 手機版不要讓區塊距離太散 */
       gap: 42px;
       min-height: auto;
     }
@@ -179,20 +175,18 @@
       /* 手機版照片和文字之間的距離 */
       gap: 30px;
 
-      /* 手機版整體置中 */
       justify-items: center;
       text-align: left;
 
-      /* 手機版上方距離，不要太空 */
+      /* 手機版上方距離 */
       margin-top: 18px;
     }
 
     .avatar {
-      /* 手機版頭貼尺寸 */
+      /* 手機版頭貼尺寸：想更大就改 300px */
       width: min(78vw, 300px);
       height: min(78vw, 300px);
 
-      /* 手機版頭貼更有主視覺感 */
       border-width: 6px;
       box-shadow: 0 28px 64px rgba(26, 39, 68, 0.16);
     }
@@ -218,33 +212,38 @@
     }
 
     .intro {
-      /* 手機版 intro 文字大小 */
       margin-top: 22px;
+
+      /* 手機版第一行介紹文字大小 */
       font-size: 20px;
+
       line-height: 1.55;
       max-width: 100%;
     }
 
     .subintro {
       margin-top: 8px;
+
+      /* 手機版第二行補充文字大小 */
       font-size: 16.5px;
+
       line-height: 1.65;
       max-width: 100%;
     }
 
-    .video-bg video {
-      /* 手機版背景影片淡一點，避免搶文字 */
-      opacity: 10;
-      filter: brightness(0.92) contrast(0.9) saturate(0.65);
+    .home-bg {
+      /* 手機版背景圖更淡，避免干擾文字 */
+      opacity: 0.18;
+      background-position: center;
     }
 
-    .video-overlay {
+    .home-overlay {
       background:
         linear-gradient(
           180deg,
           rgba(251, 252, 248, 0.9) 0%,
-          rgba(251, 252, 248, 0.8) 52%,
-          rgba(251, 252, 248, 0.88) 100%
+          rgba(251, 252, 248, 0.82) 52%,
+          rgba(251, 252, 248, 0.9) 100%
         );
     }
   }
