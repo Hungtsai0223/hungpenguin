@@ -2,9 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { responsivePhoto } from "../lib/photos";
 import portrait from "../assets/photos/about-profile.jpg";
-import award from "../assets/photos/altruism-award.jpg";
 const avatar = await responsivePhoto(portrait, [200, 400, 600], 80);
-const recognition = await responsivePhoto(award, [320, 640], 78);
 ---
 
 <Layout title="About — Ralf Tsai" description="Oceanography, environmental education, and writing by Ralf Tsai.">
@@ -37,19 +35,6 @@ const recognition = await responsivePhoto(award, [320, 640], 78);
         </ul>
       </section>
 
-      <section class="section recognition" data-reveal>
-        <h2>Recognition</h2>
-        <figure>
-          <img src={recognition.src} srcset={recognition.srcset} sizes="(max-width: 600px) 112px, 140px" alt="Ralf Tsai receiving an award at National Taiwan University" width="140" height="100" loading="lazy" decoding="async" />
-          <figcaption><strong>Altruism Award</strong><span>College of Science, National Taiwan University</span></figcaption>
-        </figure>
-      </section>
-
-      <section class="section" data-reveal>
-        <h2>Beyond Research</h2>
-        <p>Photography, travel, reading, writing, swimming, and yoga.</p>
-        <a class="profile-link" href="/blog">Explore my writing <span aria-hidden="true">→</span></a>
-      </section>
     </div>
   </main>
 </Layout>
@@ -65,13 +50,11 @@ const recognition = await responsivePhoto(award, [320, 640], 78);
   .section { min-width: 0; border-top: 1px solid #dce3e9; padding: 20px 0 0; scroll-margin-top: 18px; }
   h2 { font-size: 21px; letter-spacing: -.02em; margin: 0 0 14px; }
   ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-  li, figcaption { display: grid; gap: 3px; line-height: 1.45; }
-  li strong, figcaption strong { font-size: 15px; font-weight: 750; }
-  li span, figcaption span, .section p { color: #4d5c70; font-size: 14px; line-height: 1.55; margin: 0; }
+  li { display: grid; gap: 3px; line-height: 1.45; }
+  li strong { font-size: 15px; font-weight: 750; }
+  li span, .section p { color: #4d5c70; font-size: 14px; line-height: 1.55; margin: 0; }
   a { text-underline-offset: 3px; }
   .profile-link { display: inline-flex; gap: 6px; align-items: center; min-height: 44px; color: #365477; font-size: 14px; font-weight: 700; }
-  figure { display: flex; gap: 14px; align-items: center; margin: 0; }
-  figure img { flex: 0 0 auto; width: 140px; height: 100px; object-fit: contain; background: #eef1f4; border-radius: 12px; }
   @media (max-width: 600px) {
     .page { gap: 24px; }
     .about-hero { grid-template-columns: 1fr; gap: 16px; align-items: start; }
@@ -81,8 +64,7 @@ const recognition = await responsivePhoto(award, [320, 640], 78);
     .sections { grid-template-columns: 1fr; gap: 18px; }
     .section { padding-top: 16px; }
     h2 { font-size: 20px; margin-bottom: 12px; }
-    figure img { width: 112px; height: 80px; }
-    li strong, figcaption strong { font-size: 16px; }
-    li span, figcaption span, .section p { font-size: 15px; }
+      li strong { font-size: 16px; }
+    li span, .section p { font-size: 15px; }
   }
 </style>
