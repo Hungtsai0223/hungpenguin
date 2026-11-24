@@ -21,8 +21,18 @@ const avatar = await responsivePhoto(portrait, [200, 400, 600], 80);
       <section class="section" id="research" data-reveal>
         <h2>Education &amp; Research</h2>
         <ul>
-          <li><strong>National Taiwan University</strong><span>Oceanography · Mercury &amp; energy systems</span></li>
-          <li><strong>National Pingtung University</strong><span>Applied Chemistry · Biotechnology</span></li>
+          <li class="education-entry">
+            <strong>National Taiwan University (NTU)</strong>
+            <span class="degree">Master of Science (M.S.) — in progress</span>
+            <span>Institute of Oceanography · Chemical Oceanography</span>
+            <span class="education-note">Research: Global anthropogenic mercury emissions, energy transitions, and environmental data analysis.</span>
+          </li>
+          <li class="education-entry">
+            <strong>National Pingtung University (NPTU)</strong>
+            <span class="degree">Bachelor of Science (B.S.)</span>
+            <span>Department of Applied Chemistry · Biochemistry track</span>
+            <span class="education-note">Academic excellence awards (three times) and undergraduate research in marine natural products.</span>
+          </li>
         </ul>
       </section>
 
@@ -51,7 +61,10 @@ const avatar = await responsivePhoto(portrait, [200, 400, 600], 80);
   h2 { font-size: 21px; letter-spacing: -.02em; margin: 0 0 14px; }
   ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
   li { display: grid; gap: 3px; line-height: 1.45; }
-  li strong { font-size: 15px; font-weight: 750; }
+  li strong { font-size: 16px; font-weight: 750; }
+  .education-entry + .education-entry { margin-top: 10px; }
+  .education-entry .degree { font-weight: 700; color: #365477; }
+  .education-entry .education-note { margin-top: 4px; }
   li span, .section p { color: #4d5c70; font-size: 14px; line-height: 1.55; margin: 0; }
   a { text-underline-offset: 3px; }
   .profile-link { display: inline-flex; gap: 6px; align-items: center; min-height: 44px; color: #365477; font-size: 14px; font-weight: 700; }
