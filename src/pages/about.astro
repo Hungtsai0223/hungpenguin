@@ -38,39 +38,30 @@ const avatar = await responsivePhoto(portrait, [200, 400, 600], 80);
 
       <section class="section experience-section" data-reveal>
         <h2>What I Do</h2>
-        <p class="experience-intro">I bring science beyond the lab through education, community action, and creative projects.</p>
         <div class="experience-grid">
           <article class="experience">
-            <p class="experience-kicker">Science Communication</p>
-            <h3><a href="https://www.instagram.com/ifnoplastic.tw/" target="_blank" rel="noopener noreferrer"><span lang="zh-Hant">如果無塑</span> (@ifnoplastic.tw) ↗</a></h3>
-            <p>I translate marine science and sustainability into accessible stories, photography, and short-form videos. In 2023, I independently organized three coastal cleanups combined with local heritage walks in southern Taiwan.</p>
-            <a class="experience-link" href="/blog#videos">Explore video works →</a>
+            <h3><a href="https://www.instagram.com/ifnoplastic.tw/" target="_blank" rel="noopener noreferrer"><span lang="zh-Hant">如果無塑</span>（@ifnoplastic.tw） ↗</a></h3>
+            <p>Environmental storytelling, short-form videos, and coastal cleanup initiatives.</p>
           </article>
           <article class="experience">
-            <p class="experience-kicker">Ocean Education</p>
-            <h3>Marine Education &amp; Youth Empowerment</h3>
-            <p>Recipient of the 2026 Kuroshio Ocean Education Foundation grant. My project aims to train 4–6 young marine educators and develop reusable teaching materials on marine debris and waste prevention for high school students.</p>
+            <h3>Marine Education</h3>
+            <p>2026 Kuroshio grant recipient · Youth marine educator training and curriculum development.</p>
           </article>
           <article class="experience">
-            <p class="experience-kicker">Leadership &amp; Service</p>
-            <h3>NTU Chongde Volunteer Club</h3>
-            <p>As club president, I brought students together through volunteer service, plant-based cooking, and community activities, gaining hands-on experience in event planning, team coordination, and student engagement.</p>
+            <h3>Leadership &amp; Volunteering</h3>
+            <p>Former President, NTU Chongde Volunteer Club · Community service and student engagement.</p>
           </article>
           <article class="experience">
-            <p class="experience-kicker">International Exchange</p>
-            <h3>JST Sakura Science Program</h3>
-            <p>FY2025 Coordinator of the Taiwan Sakura Science Club Alumni (TSSCA). I contribute to Taiwan–Japan science exchange through alumni engagement, event organization, and cross-cultural collaboration.</p>
+            <h3>International Science Exchange</h3>
+            <p>JST Sakura Science alumni coordinator · Taiwan–Japan scientific and cultural exchange.</p>
           </article>
           <article class="experience">
-            <p class="experience-kicker">Community &amp; Industry</p>
             <h3>Professional Experience</h3>
-            <p>My internships span community development in Pingtung and industry experience at TCI. In 2021, I helped organize heritage walks for families and document local artisans through podcasts, connecting storytelling with community engagement.</p>
+            <p>Community development in Pingtung · Industry internship at TCI.</p>
           </article>
           <article class="experience">
-            <p class="experience-kicker">Digital Creativity</p>
             <h3>Writing &amp; App Development</h3>
-            <p>I create long-form content on Dcard as <a href="https://www.dcard.tw/@ralfwu0330" target="_blank" rel="noopener noreferrer"><span lang="zh-Hant">左旋葡萄糖</span> ↗</a> and independently developed QuoteSource, an iOS app for tracing quotation sources and assessing their credibility.</p>
-            <a class="experience-link" href="/blog#app">Explore QuoteSource →</a>
+            <p><a href="/blog#writing">Dcard creator ↗</a> · Developer of <a href="/blog#app">QuoteSource ↗</a>, an iOS quotation verification app.</p>
           </article>
         </div>
       </section>
@@ -89,15 +80,12 @@ const avatar = await responsivePhoto(portrait, [200, 400, 600], 80);
   .sections { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; }
   #research ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 36px; }
   #research .education-entry + .education-entry { margin-top: 0; }
-  .experience-intro { margin-bottom: 18px !important; }
-  .experience-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-  .experience { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 9px; border: 1px solid #dce3e9; border-radius: 14px; background: rgba(255,255,255,.48); padding: 19px; }
-  .experience .experience-kicker { color: #547295; font-size: 11px; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; }
+  .experience-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 36px; }
+  .experience { min-width: 0; display: grid; align-content: start; gap: 5px; padding: 4px 0 12px; }
   .experience h3 { margin: 0; font-size: 17px; line-height: 1.45; letter-spacing: -.015em; overflow-wrap: anywhere; }
   .experience h3 a { text-decoration: none; }
   .experience h3 a:hover { text-decoration: underline; }
-  .experience p:not(.experience-kicker) { font-size: 14px; line-height: 1.7; }
-  .experience-link { color: #365477; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; min-height: 44px; margin-top: auto; }
+  .experience p { font-size: 14px; line-height: 1.7; }
   .section { min-width: 0; border-top: 1px solid #dce3e9; padding: 20px 0 0; scroll-margin-top: 18px; }
   h2 { font-size: 21px; letter-spacing: -.02em; margin: 0 0 14px; }
   ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
@@ -118,10 +106,9 @@ const avatar = await responsivePhoto(portrait, [200, 400, 600], 80);
     .sections { grid-template-columns: 1fr; gap: 24px; }
     #research ul, .experience-grid { grid-template-columns: 1fr; gap: 12px; }
     #research .education-entry + .education-entry { margin-top: 6px; }
-    .experience { padding: 16px; gap: 7px; }
-    .experience p:not(.experience-kicker) { font-size: 15px; }
-    .experience-intro { margin-bottom: 14px !important; }
-    .section { padding-top: 16px; }
+    .experience { padding: 4px 0 9px; gap: 4px; }
+    .experience p { font-size: 15px; }
+      .section { padding-top: 16px; }
     h2 { font-size: 20px; margin-bottom: 12px; }
       li strong { font-size: 16px; }
     li span, .section p { font-size: 15px; }
