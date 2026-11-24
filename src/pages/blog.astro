@@ -4,6 +4,7 @@ import work from "../data/portfolio.json";
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 const coverFor = (reel: (typeof work.reels)[number]) => existsSync(resolve("public", reel.localCover.slice(1))) ? reel.localCover : reel.cover;
+const articleCoverFor = (post: (typeof work.articles)[number]) => existsSync(resolve("public", post.localCover.slice(1))) ? post.localCover : post.cover;
 const dcard = "https://www.dcard.tw/@ralfwu0330";
 const instagram = "https://www.instagram.com/ifnoplastic.tw/reels/";
 ---
@@ -24,7 +25,7 @@ const instagram = "https://www.instagram.com/ifnoplastic.tw/reels/";
       <div class="articles">
         {work.articles.map(post => (
           <a class="article-card" href={post.url} target="_blank" rel="noopener noreferrer">
-            {post.cover && <img class="article-cover" src={post.cover} alt="" width="480" height="270" loading="lazy" decoding="async" />}
+            {articleCoverFor(post) && <img class="article-cover" src={articleCoverFor(post)} alt="" width="480" height="270" loading="lazy" decoding="async" referrerpolicy="no-referrer" />}
             <div class="article-body">
               <span class="category">{post.category}</span>
               <h3 lang="zh-Hant">{post.title}</h3>
@@ -182,7 +183,9 @@ const instagram = "https://www.instagram.com/ifnoplastic.tw/reels/";
     .portfolio { gap: 34px; }
     .intro > p { font-size: 16px; }
     .articles { grid-template-columns: 1fr; gap: 10px; }
-    .article-body { padding: 16px; gap: 5px; }
+    .article-body { padding: 14px 16px; gap: 5px; }
+    .article-cover { aspect-ratio: 16/9; object-position: center; }
+    .article-body .text-link { min-height: 36px; }
     h3 { font-size: 17px; }
     .reels { grid-template-columns: 1fr; gap: 12px; }
     .reel-tile { display: grid; grid-template-columns: minmax(0, 38%) minmax(0,1fr); align-items: stretch; }
