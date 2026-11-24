@@ -35,12 +35,23 @@
     {
       "url": "https://www.instagram.com/reel/DXbhqOEzKw2/",
       "embed": "https://www.instagram.com/reel/DXbhqOEzKw2/embed/",
-      "cover": null
+      "cover": null,
+      "title": "Earth Day at NTU",
+      "category": "Environmental action"
     },
     {
       "url": "https://www.instagram.com/reel/DU0MTapk6kN/",
       "embed": "https://www.instagram.com/reel/DU0MTapk6kN/embed/",
-      "cover": null
+      "cover": null,
+      "title": "A New Semester at NTU",
+      "category": "Campus community"
+    },
+    {
+      "url": "https://www.instagram.com/reel/DcyDYJ_BaGm/",
+      "embed": "https://www.instagram.com/reel/DcyDYJ_BaGm/embed/",
+      "cover": null,
+      "title": "If No Plastic — Selected Reel",
+      "category": "Video creation"
     }
   ],
   "app": {
