@@ -3,6 +3,8 @@ const {
   title = "Ralf Tsai",
   description = "Personal website of Chun-Hung Tsai.",
 } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const navigation = [ { href: "/", label: "Home" }, { href: "/about", label: "About" }, { href: "/blog", label: "Works" }, { href: "/links", label: "Links" } ];
 ---
 
 <!doctype html>
@@ -18,15 +20,12 @@ const {
   <body>
     <div class="site-shell">
       <header class="site-header">
-        <a class="brand" href="/" aria-label="Ralf Tsai Home">
-          <img src="/penguin-icon.png" alt="Ralf Tsai icon" />
-        </a>
+
 
         <nav class="nav-links" aria-label="Main navigation">
-          <a href="/">Home</a>
-          <a href="/blog">Blog</a>
-          <a href="/links">Links</a>
-          <a href="/about">About</a>
+          {navigation.map(({ href, label }) => (
+            <a href={href} aria-current={currentPath === href ? "page" : undefined}>{label}</a>
+          ))}
         </nav>
       </header>
 
@@ -34,7 +33,7 @@ const {
 
       <footer class="site-footer">
         <div class="footer-links">
-          <a href="/blog">Blog</a>
+          <a href="/blog">Works</a>
           <a href="/about">About</a>
           <a href="/links">Links</a>
           <a href="https://www.linkedin.com/in/hungtsai0223/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -45,6 +44,31 @@ const {
         <p>© Chun-Hung Tsai. All rights reserved.</p>
       </footer>
     </div>
+    <script>
+      // Images are visible by default; animation is purely progressive enhancement.
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.querySelectorAll<HTMLImageElement>("main img").forEach((img) => {
+          if (!img.complete) {
+            img.addEventListener("load", () => {
+              if (typeof img.animate === "function") img.animate([{ opacity: .72 }, { opacity: 1 }], { duration: 260, easing: "ease-out" });
+            }, { once: true });
+          }
+        });
+        if ("IntersectionObserver" in window && typeof Element.prototype.animate === "function") {
+          const observer = new IntersectionObserver((entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              entry.target.animate(
+                [{ transform: "translateY(6px)", opacity: .92 }, { transform: "translateY(0)", opacity: 1 }],
+                { duration: 420, easing: "ease-out" }
+              );
+              observer.unobserve(entry.target);
+            }
+          }, { threshold: .12 });
+          document.querySelectorAll("main [data-reveal]").forEach((el) => observer.observe(el));
+        }
+      }
+    </script>
   </body>
 </html>
 
@@ -67,6 +91,7 @@ const {
   }
 
   .site-shell {
+    min-height: 100svh;
     width: min(100% - 48px, 960px);
     margin: 0 auto;
     padding: 34px 0 46px;
@@ -74,38 +99,11 @@ const {
 
   .site-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     gap: 24px;
-    margin-bottom: 86px;
+    margin-bottom: 48px;
   }
-
-  .brand {
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-  }
-
-   .brand img {
-  /* 左上角 logo 尺寸：想更大就調 width / height */
-  width: 70px;
-  height: 70px;
-
-  /* contain = 完整顯示 logo，不裁切 */
-  object-fit: contain;
-
-  /* 方形圓角：0px 是完全方形，16px 是柔和圓角 */
-  border-radius: 14px;
-
-  /* logo 背景色：你的粉霧藍 */
-  background: #a8c8f0;
-
-  /* 內距：讓 logo 不會貼邊 */
-  padding: 6px;
-
-  /* 陰影：想更簡潔可刪掉 */
-  box-shadow: 0 10px 24px rgba(26, 39, 68, 0.08);
-}
 
   .nav-links {
     display: flex;
@@ -120,8 +118,36 @@ const {
     font-weight: 700;
   }
 
-  .nav-links a:hover {
+  .nav-links a:hover,
+  .nav-links a[aria-current="page"] {
     color: #1a2744;
+  }
+  .nav-links a[aria-current="page"] {
+    text-decoration: underline;
+    text-underline-offset: 7px;
+    text-decoration-color: #6c88ad;
+    text-decoration-thickness: 2px;
+  }
+  .nav-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 4px 3px;
+  }
+  a:focus-visible {
+    outline: 2px solid #365477;
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+  main img {
+    background-color: #e4eaf0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      transition-duration: .01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 
   .site-footer {
@@ -161,16 +187,21 @@ const {
     }
 
     .site-header {
-      align-items: flex-start;
-      flex-direction: column;
-      gap: 18px;
-      margin-bottom: 58px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
     }
 
     .nav-links {
-      gap: 18px;
+      gap: 8px;
+      width: 100%;
+      justify-content: space-between;
       flex-wrap: wrap;
     }
+
+    .nav-links a { font-size: 16px; padding-inline: 5px; }
+    .site-footer { margin-top: 48px; }
+    .footer-links a { padding-block: 8px; }
 
     .site-footer {
       flex-direction: column;
