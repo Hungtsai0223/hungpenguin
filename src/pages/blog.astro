@@ -1,6 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import work from "../data/portfolio.json";
+import { existsSync } from "node:fs";
+import { resolve } from "node:path";
+const coverFor = (reel: (typeof work.reels)[number]) => existsSync(resolve("public", reel.localCover.slice(1))) ? reel.localCover : reel.cover;
 const dcard = "https://www.dcard.tw/@ralfwu0330";
 const instagram = "https://www.instagram.com/ifnoplastic.tw/reels/";
 ---
@@ -41,10 +44,17 @@ const instagram = "https://www.instagram.com/ifnoplastic.tw/reels/";
       <div class="reels">
         {work.reels.map((reel, i) => (
           <article class="reel">
-            <button type="button" class:list={["reel-tile", { "has-cover": !!reel.cover }]} data-embed={reel.embed} data-url={reel.url} data-title={reel.title} aria-haspopup="dialog">
-              {reel.cover && <img class="reel-cover" src={reel.cover} alt="" loading="lazy" decoding="async" />}
-              <span class="reel-top"><span class="reel-number">FILM / 0{i+1}</span><svg class="play-symbol" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14l11-7z" fill="currentColor"/></svg></span>
-              <span class="reel-details"><span class="reel-category">{reel.category}</span><span class="reel-title">{reel.title}</span><span class="reel-action">View video <span aria-hidden="true">↗</span></span></span>
+            <button type="button" class="reel-tile" data-embed={reel.embed} data-url={reel.url} data-title={reel.title} aria-haspopup="dialog" aria-label={`Watch ${reel.title}`}>
+              <span class="reel-media">
+                <img class="reel-cover" src={coverFor(reel)} alt={`Original Instagram cover — ${reel.title}`} width="360" height="480" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                <span class="reel-overlay" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 5v14l11-7z" fill="currentColor"/></svg></span>
+              </span>
+              <span class="reel-details">
+                <span class="reel-category">{reel.category} · Film 0{i+1}</span>
+                <span class="reel-title">{reel.title}</span>
+                <span class="reel-description">{reel.description}</span>
+                <span class="reel-action">View video <span aria-hidden="true">↗</span></span>
+              </span>
             </button>
           </article>
         ))}
@@ -135,21 +145,19 @@ const instagram = "https://www.instagram.com/ifnoplastic.tw/reels/";
   .article-body p { font-size: 14px; }
   .article-body .text-link { margin-top: auto; }
   .metrics { display: flex; gap: 10px; }
-  .reel { min-width: 0; }
-  .reel-tile { width: 100%; min-height: 190px; position: relative; display: flex; flex-direction: column; justify-content: space-between; text-align: left; gap: 22px; padding: 20px; overflow: hidden; color: #1a2744; background: linear-gradient(145deg,#edf3f8,#e3ebf2); border: 1px solid #d9e3ec; border-radius: 16px; font: inherit; cursor: pointer; transition: background .18s, border-color .18s, transform .18s; }
-  .reel-tile:hover { background: #dce7f1; border-color: #9eb4ca; transform: translateY(-2px); }
+  .reel { min-width: 0; display: flex; }
+  .reel-tile { width: 100%; display: flex; flex-direction: column; text-align: left; padding: 0; overflow: hidden; color: #1a2744; background: #fff; border: 1px solid #dce3e9; border-radius: 16px; font: inherit; cursor: pointer; transition: border-color .18s, transform .18s; }
+  .reel-tile:hover { border-color: #9eb4ca; transform: translateY(-2px); }
   .reel-tile:focus-visible,.close-video:focus-visible { outline: 2px solid #365477; outline-offset: 3px; }
-  .reel-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; z-index: 1; }
-  .reel-number { font-size: 11px; font-weight: 800; letter-spacing: .1em; color: #547295; }
-  .play-symbol { width: 40px; height: 40px; padding: 10px; background: #1a2744; color: #fff; border-radius: 50%; flex: 0 0 auto; }
-  .reel-details { display: grid; gap: 6px; z-index: 1; }
+  .reel-media { position: relative; display: block; width: 100%; aspect-ratio: 3/4; background: #e4eaf0; overflow: hidden; }
+  .reel-cover { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .reel-overlay { display: grid; place-items: center; position: absolute; inset: 0; }
+  .reel-overlay svg { width: 50px; height: 50px; padding: 13px; border-radius: 50%; background: rgba(15,27,44,.7); color: #fff; box-shadow: 0 2px 12px rgba(0,0,0,.15); }
+  .reel-details { display: flex; flex-direction: column; flex: 1; width: 100%; gap: 8px; padding: 17px; }
   .reel-category { font-size: 12px; color: #547295; font-weight: 650; }
   .reel-title { font-size: 18px; line-height: 1.35; font-weight: 750; }
-  .reel-action { color: #365477; font-size: 13px; font-weight: 700; margin-top: 4px; }
-  .reel-tile.has-cover { min-height: 0; aspect-ratio: 9/13; color: white; }
-  .reel-cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .has-cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 30%,rgba(15,27,44,.75)); }
-  .has-cover .reel-category,.has-cover .reel-action,.has-cover .reel-number { color: white; }
+  .reel-description { font-size: 14px; line-height: 1.55; color: #46566b; }
+  .reel-action { color: #365477; font-size: 13px; font-weight: 700; margin-top: auto; padding-top: 5px; }
   .video-dialog { width: min(94vw, 460px); max-height: 94dvh; border: 0; border-radius: 18px; padding: 12px 14px; color: #1a2744; background: #fbfcf8; overflow: auto; box-shadow: 0 20px 90px rgba(26,39,68,.22); }
   .video-dialog::backdrop { background: rgba(13,23,40,.72); }
   .video-heading { display: flex; gap: 12px; justify-content: space-between; align-items: center; padding: 2px 2px 10px; }
@@ -173,12 +181,13 @@ const instagram = "https://www.instagram.com/ifnoplastic.tw/reels/";
     .articles { grid-template-columns: 1fr; gap: 10px; }
     .article-body { padding: 16px; gap: 5px; }
     h3 { font-size: 17px; }
-    .reels { grid-template-columns: 1fr; gap: 10px; }
-    .reel-tile { min-height: 0; display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 12px; padding: 16px; }
-    .reel-top { grid-column: 2; grid-row: 1; flex-direction: column-reverse; align-items: center; gap: 6px; }
-    .reel-details { grid-column: 1; grid-row: 1; }
+    .reels { grid-template-columns: 1fr; gap: 12px; }
+    .reel-tile { display: grid; grid-template-columns: minmax(0, 38%) minmax(0,1fr); align-items: stretch; }
+    .reel-media { height: 100%; aspect-ratio: 3/4; min-height: 150px; }
+    .reel-overlay svg { width: 38px; height: 38px; padding: 10px; }
+    .reel-details { padding: 13px; gap: 6px; }
     .reel-title { font-size: 16px; }
-    .reel-tile.has-cover { aspect-ratio: 16/10; }
+    .reel-description { font-size: 13px; }
     .video-dialog { max-height: 94dvh; }
     .app { grid-template-columns: 1fr; padding: 19px; gap: 18px; }
     .store { width: 100%; }

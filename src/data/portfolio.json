@@ -35,23 +35,29 @@
     {
       "url": "https://www.instagram.com/reel/DXbhqOEzKw2/",
       "embed": "https://www.instagram.com/reel/DXbhqOEzKw2/embed/",
-      "cover": null,
+      "cover": "https://scontent-sjc6-1.cdninstagram.com/v/t51.82787-15/670986103_18041699048784824_3395150350816210529_n.jpg?stp=dst-jpg_e35_p640x640_sh2.08_tt6&_nc_cat=106&_nc_map=urlgen_bucketless&ig_cache_key=Mzg4MDg0MzU0MDc3NTYxMTQ0NjE4MDQxNjk5MDQyNzg0ODI0.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjExNzguc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=QoW3-_B4W7sQ7kNvwFLAB9f&_nc_oc=AdoOeJyVKqr6r0_igOATkoaiYOz6SWtYowxRwRivCYem4kRw6LI2Nzz5RntoOYjhicA&_nc_zt=23&_nc_ht=scontent-sjc6-1.cdninstagram.com&_nc_gid=6hSncgCQxAvvZIGutfJpXw&_nc_ss=7b789&_nc_ct=RQosPBUIFQQlBAAAAA&oh=00_AQStFXJGgWUwJYUF1jRvUXJiokPi15VWoNrqP7uQghWBGA&oe=6B0B01C5",
       "title": "Earth Day at NTU",
-      "category": "Environmental action"
+      "category": "Environmental action",
+      "localCover": "/portfolio/reels/DXbhqOEzKw2.jpg",
+      "description": "A World Earth Day initiative documenting a solo cleanup of YouBike stations around NTU."
     },
     {
       "url": "https://www.instagram.com/reel/DU0MTapk6kN/",
       "embed": "https://www.instagram.com/reel/DU0MTapk6kN/embed/",
-      "cover": null,
+      "cover": "https://scontent-sjc3-1.cdninstagram.com/v/t51.82787-15/631546197_18041913524737448_1337948738005964618_n.jpg?stp=dst-jpg_e15_p640x640_tt6&_nc_cat=110&_nc_map=urlgen_bucketless&ig_cache_key=MzgzMzc0MzI5MzY0MjE1NjMwMTE4MDQxOTEzNTIxNzM3NDQ4.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=V1oGDxEwcRIQ7kNvwG3UpK5&_nc_oc=AdozHzbNqeeUOOWxF_3b8MPOzKJ3sET2N4PxTkCClltY_mQNPyUzs4r7yOVc62pdFJY&_nc_zt=23&_nc_ht=scontent-sjc3-1.cdninstagram.com&_nc_gid=G5ObcGxUoMMeZ9A0GMxlaQ&_nc_ss=7b789&_nc_ct=RQosPBUIFQQlBAAAAA&oh=00_AQSCQmo-VvJBAEa--oEX04_epM2yBIUQhqupLY47Mju5Lg&oe=6B0AFE28",
       "title": "A New Semester at NTU",
-      "category": "Campus community"
+      "category": "Campus community",
+      "localCover": "/portfolio/reels/DU0MTapk6kN.jpg",
+      "description": "A collaborative campus video introducing the new semester’s student club activities."
     },
     {
       "url": "https://www.instagram.com/reel/DcyDYJ_BaGm/",
       "embed": "https://www.instagram.com/reel/DcyDYJ_BaGm/embed/",
-      "cover": null,
+      "cover": "https://scontent-sjc3-1.cdninstagram.com/v/t51.82787-15/791143428_18061885682784824_4640459256281837890_n.jpg?stp=dst-jpg_e15_p640x640_tt6&_nc_cat=106&_nc_map=urlgen_bucketless&ig_cache_key=Mzk3NzI1NjI3NTA0OTU1NDM0MjE4MDYxODg1Njc5Nzg0ODI0.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fdXNlcl9zZWxlY3RlZF90aHVtYm5haWwuQzMifQ%3D%3D&_nc_ohc=9hCf9yI_V8QQ7kNvwERI0w4&_nc_oc=AdpOdlDw_a4gWnkbrbwYYRoE_SvWIZHWtcIXf8e6T2zNnpMzmgzwIQAPatxhDv5t6uA&_nc_zt=23&_nc_ht=scontent-sjc3-1.cdninstagram.com&_nc_gid=KTbqKsuMCpBmm2XmWyDbDw&_nc_ss=7b789&_nc_ct=RQosPBUIFQ4lBAAAAA&oh=00_AQT6-TQzhZlwhtYsqTLBI8FVpQ7GYXMe41Hsn7maLzIX4A&oe=6B0B101A",
       "title": "If No Plastic — Selected Reel",
-      "category": "Video creation"
+      "category": "Video creation",
+      "localCover": "/portfolio/reels/DcyDYJ_BaGm.jpg",
+      "description": "A selected short-form video from the If No Plastic creative project."
     }
   ],
   "app": {
