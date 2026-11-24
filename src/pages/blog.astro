@@ -3,27 +3,30 @@ import Layout from "../layouts/Layout.astro";
 
 const featuredWriting = [
   {
-    title: "臺北不是我的家，他告訴我要學會愛自己",
+    title: "Taipei Is Not My Home: Learning to Love Myself",
     platform: "Medium",
     category: "Essay",
+    cover: "essay",
     description:
       "A personal essay on living away from home, growing through uncertainty, and learning to care for oneself.",
     url: "https://medium.com/@hungtsai/%E8%87%BA%E5%8C%97%E4%B8%8D%E6%98%AF%E6%88%91%E7%9A%84%E5%AE%B6-%E4%BB%96%E5%91%8A%E8%A8%B4%E8%A6%81%E5%AD%B8%E6%9C%83%E6%84%9B%E8%87%AA%E5%B7%B1-cec14d26ac51",
     external: true,
   },
   {
-    title: "池上好好，關於打工換宿這件事",
+    title: "A Slower Life in Chishang: My Work Exchange",
     platform: "Medium",
     category: "Travel writing",
+    cover: "travel",
     description:
       "A travel and life reflection from a work-exchange experience in Chishang, written with attention to place, pace, and memory.",
     url: "https://medium.com/@hungtsai/%E6%B1%A0%E4%B8%8A%E5%A5%BD%E5%A5%BD-%E9%97%9C%E6%96%BC%E6%89%93%E5%B7%A5%E6%8F%9B%E5%AE%BF%E9%80%99%E4%BB%B6%E4%BA%8B-57fb93b312d5",
     external: true,
   },
   {
-    title: "如果無塑｜Environmental Education Notes",
+    title: "If No Plastic — Environmental Education",
     platform: "Instagram",
     category: "Sustainability",
+    cover: "ocean",
     description:
       "Environmental education content on ocean issues, plastic-free living, vegetarian life, and everyday sustainability.",
     url: "https://www.instagram.com/ifnoplastic.tw/",
@@ -33,7 +36,7 @@ const featuredWriting = [
 
 const writingCollection = [
   {
-    title: "臺北不是我的家，他告訴我要學會愛自己",
+    title: "Taipei Is Not My Home: Learning to Love Myself",
     platform: "Medium",
     category: "Essay",
     description:
@@ -42,7 +45,7 @@ const writingCollection = [
     external: true,
   },
   {
-    title: "池上好好，關於打工換宿這件事",
+    title: "A Slower Life in Chishang: My Work Exchange",
     platform: "Medium",
     category: "Travel writing",
     description:
@@ -51,7 +54,7 @@ const writingCollection = [
     external: true,
   },
   {
-    title: "家教，是為了陪伴一顆生命種子",
+    title: "Tutoring: Nurturing a Seed of Life",
     platform: "Medium",
     category: "Education",
     description:
@@ -60,7 +63,7 @@ const writingCollection = [
     external: true,
   },
   {
-    title: "研究所推甄之路，我與海的距離",
+    title: "My Road to Graduate School and the Sea",
     platform: "Medium",
     category: "Study notes",
     description:
@@ -69,7 +72,7 @@ const writingCollection = [
     external: true,
   },
   {
-    title: "左旋葡萄糖｜Dcard Creator Works",
+    title: "Dcard — Selected Writing",
     platform: "Dcard",
     category: "Creator portfolio",
     description:
@@ -78,7 +81,7 @@ const writingCollection = [
     external: true,
   },
   {
-    title: "如果無塑｜Environmental Education Notes",
+    title: "If No Plastic — Environmental Education",
     platform: "Instagram",
     category: "Sustainability",
     description:
@@ -87,15 +90,18 @@ const writingCollection = [
     external: true,
   },
   {
-    title: "Ocean & Mercury Research Notes",
+    title: "Ocean & Mercury Research",
     platform: "Research",
     category: "Oceanography",
     description:
-      "Notes on environmental change, anthropogenic mercury emissions, energy structure, and data analysis.",
-    url: "/about",
+      "An overview of my academic research on environmental change, anthropogenic mercury emissions, and energy systems.",
+    url: "/about#research",
     external: false,
   },
 ];
+const moreWriting = writingCollection.filter(
+  (item) => !featuredWriting.some((featured) => featured.title === item.title)
+);
 ---
 
 <Layout
@@ -111,7 +117,7 @@ const writingCollection = [
       </p>
     </section>
 
-    <section class="featured-section" aria-labelledby="featured-title">
+    <section class="featured-section" aria-labelledby="featured-title" data-reveal>
       <div class="section-heading">
         <p class="section-label">Featured</p>
         <h2 id="featured-title">Featured Writing</h2>
@@ -125,7 +131,26 @@ const writingCollection = [
             target={item.external ? "_blank" : undefined}
             rel={item.external ? "noopener noreferrer" : undefined}
           >
-            <span class="platform">{item.platform}</span>
+            <div class:list={["cover", item.cover]} aria-hidden="true">
+              {item.cover === "ocean" ? (
+                <img src="/sea.jpg" alt="" loading="lazy" decoding="async" />
+              ) : (
+                <svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
+                  {item.cover === "essay" ? (
+                    <g fill="none" stroke="currentColor" stroke-width="2.5">
+                      <path d="M55 117V59l42-30 42 30v58M75 117V83h44v34M166 117V48h35v69M208 117V23h36v94M252 117V66h23v51M36 117h257" />
+                      <circle cx="157" cy="33" r="13" />
+                    </g>
+                  ) : (
+                    <g fill="none" stroke="currentColor" stroke-width="2.5">
+                      <circle cx="238" cy="38" r="22" />
+                      <path d="M0 89 77 32 159 89 205 62 320 99M0 113Q80 93 160 113T320 113M0 134Q80 114 160 134T320 134M122 150l38-61 35 61" />
+                    </g>
+                  )}
+                </svg>
+              )}
+            </div>
+            <span class="platform">{item.platform} · Chinese content</span>
             <h3>{item.title}</h3>
             <p>{item.description}</p>
 
@@ -140,14 +165,14 @@ const writingCollection = [
       </div>
     </section>
 
-    <section class="collection-section" aria-labelledby="collection-title">
+    <section class="collection-section" aria-labelledby="collection-title" data-reveal>
       <div class="section-heading">
         <p class="section-label">Medium · Dcard · Sustainability · Research</p>
-        <h2 id="collection-title">Writing Collection</h2>
+        <h2 id="collection-title">More Writing &amp; Research</h2>
       </div>
 
       <div class="writing-list">
-        {writingCollection.map((item) => (
+        {moreWriting.map((item) => (
           <a
             class="writing-item"
             href={item.url}
@@ -157,11 +182,13 @@ const writingCollection = [
             <div class="item-meta" aria-label={`${item.platform}, ${item.category}`}>
               <span>{item.platform}</span>
               <span>{item.category}</span>
+              {item.external && <span>Chinese content</span>}
             </div>
 
             <div class="item-body">
               <h3>{item.title}</h3>
               <p>{item.description}</p>
+              {item.url === "https://medium.com/@hungtsai" && <p class="source-note">Find this essay on my Medium profile.</p>}
             </div>
 
             <span class="item-action" aria-hidden="true">
@@ -274,9 +301,23 @@ const writingCollection = [
     background: rgba(255, 255, 255, 0.88);
   }
 
+  .cover {
+    height: 150px;
+    margin: -22px -22px 18px;
+    border-radius: 17px 17px 0 0;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: #e4edf5;
+    color: #587390;
+  }
+  .cover svg { width: 100%; height: 100%; stroke-width: 2.5; }
+  .cover.travel { background: #e8eee3; color: #688272; }
+  .cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .source-note { font-size: 13px !important; color: #365477 !important; }
   .platform {
     width: fit-content;
-    margin-bottom: 22px;
+    margin-bottom: 14px;
     padding: 5px 10px;
     border: 1px solid rgba(168, 200, 240, 0.7);
     border-radius: 999px;
@@ -438,6 +479,7 @@ const writingCollection = [
       border-radius: 16px;
     }
 
+    .cover { margin: -20px -20px 16px; border-radius: 15px 15px 0 0; }
     .writing-item {
       grid-template-columns: 1fr;
       padding: 22px 0;

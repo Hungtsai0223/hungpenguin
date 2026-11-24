@@ -6,7 +6,7 @@
   <div class="home-overlay" aria-hidden="true"></div>
 
   <section class="hero">
-    <img class="avatar" src="/profile.jpg" alt="Portrait of Ralf Tsai" />
+    <img class="avatar" src="/profile.jpg" alt="Portrait of Ralf Tsai" width="230" height="230" fetchpriority="high" decoding="async" />
 
     <div class="hero-content">
       <p class="kicker">Hey!</p>
@@ -18,8 +18,13 @@
       </p>
 
       <p class="subintro">
-        Researcher, storyteller, and creator of <strong>如果無塑</strong>.
+        Researcher, storyteller, and creator of <strong lang="zh-Hant">如果無塑</strong>.
       </p>
+      <div class="hero-actions" aria-label="Explore the website">
+        <a class="primary-action" href="/blog">Explore my writing <span aria-hidden="true">↗</span></a>
+        <a class="secondary-action" href="/about">About me</a>
+        <a class="secondary-action" href="/links">Get in touch</a>
+      </div>
     </div>
   </section>
 </main>
@@ -55,7 +60,7 @@
   background-position: center;
   background-repeat: no-repeat;
 
-  opacity: 10;
+  opacity: 1;
   filter: brightness(0.9) contrast(0.88) saturate(0.72);
 }
 
@@ -160,6 +165,36 @@
   .subintro strong {
     color: #1a2744;
     font-weight: 850;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 12px;
+    margin-top: 26px;
+  }
+  .hero-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid rgba(26, 39, 68, .18);
+    transition: background .2s ease, color .2s ease;
+  }
+  .primary-action { background: #1a2744; color: #fff; }
+  .primary-action:hover { background: #365477; }
+  .secondary-action { background: rgba(251,252,248,.72); color: #1a2744; }
+  .secondary-action:hover { background: #e4edf8; }
+  @media (max-width: 430px) {
+    .hero-actions { gap: 8px; }
+    .hero-actions a { padding-inline: 12px; }
   }
 
   /* 手機版優化 */

@@ -8,89 +8,67 @@ import Layout from "../layouts/Layout.astro";
 >
   <main class="page">
     <section class="about-hero">
-     <img src="/about-profile.jpg" alt="Portrait of Chun-Hung Tsai at the Institute of Oceanography" />
-
+      <img src="/about-profile.jpg" alt="Portrait of Chun-Hung Tsai at the Institute of Oceanography" width="200" height="200" decoding="async" />
       <div>
         <p class="kicker">About</p>
-        <h1>Sustainability, and stories that connect people with the world around them.</h1>
-
-        <p>
-          I’m Chun-Hung Tsai, also known as Ralf, from Kaohsiung, Taiwan. I studied
-          Applied Chemistry at National Pingtung University, with a minor in the Applied
-          Biotechnology Credit Program, and received multiple academic excellence awards during my undergraduate years.
-        </p>
-
-        <p>
-          My academic path later led me across disciplines to the Institute of Oceanography
-          at National Taiwan University. My academic background began in chemistry and gradually
-          led me into oceanography, where I focus on environmental change. I enjoy turning
-          complex scientific information into clear, meaningful stories that can be understood
-          by broader audiences.
-        </p>
-
-        <p>
-          Beyond research, I care deeply about environmental education. Through
-          <strong>@Ifnoplastic.tw （如果無塑）</strong>, I document sustainability practices, ocean-related
-          issues, vegetarian living, campus observations, and small actions that can reconnect
-          people with the environment.
-        </p>
+        <h1>Science, sustainability, and stories that connect people.</h1>
+        <p>I'm Chun-Hung Tsai (Ralf), from Kaohsiung, Taiwan. My path from chemistry to oceanography has shaped how I explore environmental change and communicate science.</p>
+        <a class="profile-link" href="https://www.linkedin.com/in/hungtsai0223/" target="_blank" rel="noopener noreferrer">View my LinkedIn profile ↗</a>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="research" data-reveal>
+      <h2>Education &amp; Research</h2>
+      <div class="detail-grid">
+        <article class="detail">
+          <h3>National Taiwan University</h3>
+          <p>Graduate studies in oceanography, focusing on anthropogenic mercury emissions, energy systems, and environmental change.</p>
+        </article>
+        <article class="detail">
+          <h3>National Pingtung University</h3>
+          <p>Applied Chemistry, with training in applied biotechnology and multiple academic excellence awards.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" data-reveal>
       <h2>What I Do</h2>
+      <div class="detail-grid">
+        <article class="detail">
+          <h3>Environmental Education</h3>
+          <p>Through <a href="https://www.instagram.com/ifnoplastic.tw/" target="_blank" rel="noopener noreferrer">If No Plastic</a>, I share ocean issues, plastic-free living, and everyday sustainability in accessible ways.</p>
+        </article>
+        <article class="detail">
+          <h3>Leadership &amp; Collaboration</h3>
+          <p>Former President of the Chongde Volunteer Club and Vice President of the Department Student Association, with experience in cross-disciplinary coordination.</p>
+        </article>
+        <article class="detail">
+          <h3>Professional Experience</h3>
+          <p>Internships in NGO and industry settings, including local revitalization work and TCI Co., Ltd., have helped me connect research with practice.</p>
+        </article>
+        <article class="detail">
+          <h3>International Engagement</h3>
+          <p>I participate in international science exchange through the Sakura Science Program under the Japan Science and Technology Agency (JST).</p>
+        </article>
+      </div>
+    </section>
 
-      <ul class="what-i-do">
-        <li>
-          <strong>Leadership & Collaboration</strong><br />
-          I previously served as President of the Chongde Volunteer Club and Vice President
-          of the Department Student Association, where I developed strengths in teamwork,
-          communication, and cross-disciplinary coordination.
-        </li>
-
-        <li>
-          <strong>Research & Professional Experience</strong><br />
-          I have interned in both NGO and industry settings, including work related to local
-          revitalization and an internship at TCI Co., Ltd., which strengthened my ability
-          to connect academic research with real-world practice.
-        </li>
-
-        <li>
-          <strong>International Engagement</strong><br />
-          I currently serve as a board member of the Sakura Science Program, a science exchange
-          initiative under Japan Science and Technology Agency (JST).
-        </li>
-      </ul>
-
-      <figure class="feature-image">
-        <img src="/altruism-award.jpg" alt="Ralf Tsai receiving an award at National Taiwan University commencement" />
-        <figcaption>
-          Honored with the Altruism Award of the College of Science at National Taiwan University upon graduation.
-        </figcaption>
+    <section class="section" data-reveal>
+      <h2>Recognition</h2>
+      <figure class="feature-image award-image">
+        <img src="/altruism-award.jpg" alt="Ralf Tsai receiving an award at National Taiwan University" loading="lazy" decoding="async" />
+        <figcaption>Altruism Award, College of Science, National Taiwan University.</figcaption>
       </figure>
     </section>
 
-    <section class="section">
-      <h2>My Interests</h2>
-
-      <p>
-        I’m drawn to the kinds of experiences that make life feel observant, reflective, and alive.
-        I enjoy photography, travel, good food, reading, and writing—especially Chinese prose.
-        In daily life, I also enjoy swimming and yoga, and recently I’ve been learning to skateboard.
-      </p>
-
-      <p>
-        Many of the things I love have one thing in common: they help me notice the world more carefully.
-        Whether it is through a camera lens, a quiet paragraph, a journey to a new place, or the rhythm
-        of movement in water, I value moments that slow me down and bring me closer to what is real.
-      </p>
-
-      <figure class="feature-image">
-        <img src="/sea.jpg" alt="The sea near dusk" />
-        <figcaption>
-          My favorite moment is the sea just before evening—quiet, open, and full of space to think.
-        </figcaption>
+    <section class="section" data-reveal>
+      <h2>Beyond Research</h2>
+      <p>I enjoy photography, travel, reading, Chinese prose, swimming, and yoga. These interests help me notice the world more carefully and find stories worth sharing.</p>
+      <figure class="feature-image sea-image">
+        <img src="/sea.jpg" alt="The sea near dusk" loading="lazy" decoding="async" />
+        <figcaption>My favorite moment is the sea just before evening—quiet, open, and full of space to think.</figcaption>
       </figure>
+      <a class="profile-link" href="/blog">Explore my writing →</a>
     </section>
   </main>
 </Layout>
@@ -103,7 +81,7 @@ import Layout from "../layouts/Layout.astro";
 
   .about-hero {
     display: grid;
-    grid-template-columns: 180px 1fr;
+    grid-template-columns: 200px minmax(0, 1fr);
     gap: 32px;
     align-items: start;
   }
@@ -204,7 +182,37 @@ import Layout from "../layouts/Layout.astro";
     line-height: 1.6;
   }
 
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .detail {
+    padding: 22px;
+    border-radius: 18px;
+    border: 1px solid rgba(26,39,68,.12);
+    background: rgba(255,255,255,.54);
+  }
+  .detail h3 { font-size: 18px; margin: 0 0 8px; }
+  .detail p { margin: 0; font-size: 16px; line-height: 1.65; }
+  .profile-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: #365477;
+    font-weight: 700;
+    text-underline-offset: 4px;
+    width: fit-content;
+  }
+  .feature-image img { aspect-ratio: 16 / 10; object-fit: contain; background: #e4eaf0; }
+  .award-image { max-width: 640px; }
+  .sea-image img { object-fit: cover; aspect-ratio: 16 / 9; }
+
   @media screen and (max-width: 720px) {
+    .page { gap: 38px; }
+    .detail-grid { grid-template-columns: 1fr; }
+    .detail { padding: 18px; }
+    .section { gap: 8px; }
     .about-hero {
       grid-template-columns: 1fr;
       gap: 22px;
@@ -216,7 +224,7 @@ import Layout from "../layouts/Layout.astro";
     }
 
     h1 {
-      font-size: clamp(34px, 10vw, 30px);
+      font-size: clamp(30px, 8vw, 42px);
     }
 
     p,
