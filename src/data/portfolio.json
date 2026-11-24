@@ -1,0 +1,60 @@
+{
+  "articles": [
+    {
+      "id": "258086036",
+      "title": "永續基礎能力測驗｜備考攻略",
+      "category": "Sustainability",
+      "description": "A practical guide to preparing for the sustainability fundamentals exam.",
+      "url": "https://www.dcard.tw/@ralfwu0330/post/258086036",
+      "cover": null,
+      "views": null,
+      "likes": null
+    },
+    {
+      "id": "260103760",
+      "title": "非本科系也能考取外語導遊領隊雙證照",
+      "category": "Learning",
+      "description": "A personal guide to the exams, study strategy, and English interview.",
+      "url": "https://www.dcard.tw/@ralfwu0330/post/260103760",
+      "cover": null,
+      "views": null,
+      "likes": null
+    },
+    {
+      "id": "242014511",
+      "title": "淨灘教會我的事：「對的事情，就該堅持！」",
+      "category": "Environment",
+      "description": "How a first beach cleanup inspired a long-term interest in conservation.",
+      "url": "https://www.dcard.tw/@ralfwu0330/post/242014511",
+      "cover": null,
+      "views": null,
+      "likes": null
+    }
+  ],
+  "reels": [
+    {
+      "url": "https://www.instagram.com/reel/DMrF6qPOLrk/",
+      "embed": "https://www.instagram.com/reel/DMrF6qPOLrk/embed/",
+      "cover": null
+    },
+    {
+      "url": "https://www.instagram.com/reel/DM7dCpIheG-/",
+      "embed": "https://www.instagram.com/reel/DM7dCpIheG-/embed/",
+      "cover": null
+    },
+    {
+      "url": "https://www.instagram.com/reel/DN0dZGoXh3-/",
+      "embed": "https://www.instagram.com/reel/DN0dZGoXh3-/embed/",
+      "cover": null
+    }
+  ],
+  "app": {
+    "url": "https://apps.apple.com/tw/app/id6798301867",
+    "icon": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/f2/d7/58/f2d758f4-9e0d-4619-292f-603a431a12a3/Placeholder.mill/200x200Icon.ApSiOS01-75.webp",
+    "screens": [
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ae/a7/16/aea716ed-fc7b-7641-0600-b86d10b9bb92/01__U53e5_U6e90_AppStore_1242x2688_RGB.jpg/300x650bb.webp",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/bf/43/a8/bf43a89c-c394-459a-4b47-ed311e52c965/02__U53e5_U6e90_AppStore_1242x2688_RGB.jpg/300x650bb.webp",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/f7/6b/03/f76b034a-7d3b-ce07-ea4f-f91a051e0718/03__U53e5_U6e90_AppStore_1242x2688_RGB.jpg/300x650bb.webp"
+    ]
+  }
+}
