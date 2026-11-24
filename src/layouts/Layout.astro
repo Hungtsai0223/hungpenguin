@@ -1,7 +1,4 @@
 ---
-import { responsivePhoto } from "../lib/photos";
-import penguin from "../assets/photos/penguin-icon.png";
-const logo = await responsivePhoto(penguin, [72, 144], 88);
 const {
   title = "Ralf Tsai",
   description = "Personal website of Chun-Hung Tsai.",
@@ -23,9 +20,7 @@ const navigation = [ { href: "/", label: "Home" }, { href: "/about", label: "Abo
   <body>
     <div class="site-shell">
       <header class="site-header">
-        <a class="brand" href="/" aria-label="Ralf Tsai Home">
-          <img src={logo.src} srcset={logo.srcset} sizes="70px" alt="Ralf Tsai icon" width="70" height="70" decoding="async" />
-        </a>
+
 
         <nav class="nav-links" aria-label="Main navigation">
           {navigation.map(({ href, label }) => (
@@ -104,38 +99,11 @@ const navigation = [ { href: "/", label: "Home" }, { href: "/about", label: "Abo
 
   .site-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     gap: 24px;
-    margin-bottom: 86px;
+    margin-bottom: 48px;
   }
-
-  .brand {
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-  }
-
-   .brand img {
-  /* 左上角 logo 尺寸：想更大就調 width / height */
-  width: 70px;
-  height: 70px;
-
-  /* contain = 完整顯示 logo，不裁切 */
-  object-fit: contain;
-
-  /* 方形圓角：0px 是完全方形，16px 是柔和圓角 */
-  border-radius: 14px;
-
-  /* logo 背景色：你的粉霧藍 */
-  background: #a8c8f0;
-
-  /* 內距：讓 logo 不會貼邊 */
-  padding: 6px;
-
-  /* 陰影：想更簡潔可刪掉 */
-  box-shadow: 0 10px 24px rgba(26, 39, 68, 0.08);
-}
 
   .nav-links {
     display: flex;
@@ -219,10 +187,9 @@ const navigation = [ { href: "/", label: "Home" }, { href: "/about", label: "Abo
     }
 
     .site-header {
-      align-items: flex-start;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 28px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
     }
 
     .nav-links {
