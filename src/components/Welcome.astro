@@ -33,9 +33,59 @@ const backgroundStyle = `--bg-small: url('${background.src}'); --bg-large: url('
         <a class="secondary-action" href="/about">About me</a>
         <a class="secondary-action" href="/links">Get in touch</a>
       </div>
+      <div class="ocean-sound">
+        <button type="button" class="sound-toggle" aria-pressed="false" aria-label="Play ocean sounds">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+            <path d="M2 8c2.5 0 2.5-2.5 5-2.5S9.5 8 12 8s2.5-2.5 5-2.5S19.5 8 22 8M2 13c2.5 0 2.5-2.5 5-2.5S9.5 13 12 13s2.5-2.5 5-2.5S19.5 13 22 13M2 18c2.5 0 2.5-2.5 5-2.5S9.5 18 12 18s2.5-2.5 5-2.5S19.5 18 22 18"/>
+          </svg>
+          <span class="sound-label">Listen to the ocean</span>
+          <span class="sound-state" aria-hidden="true">Off</span>
+        </button>
+        <audio id="ocean-audio" loop preload="none" aria-label="Ocean waves ambient sound">
+          <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/f/f1/Oceanwavescrushing.ogg/Oceanwavescrushing.ogg.mp3" type="audio/mpeg" />
+          <source src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Oceanwavescrushing.ogg" type="audio/ogg" />
+        </audio>
+        <span class="sound-credit">Sound: <a href="https://commons.wikimedia.org/wiki/File:Oceanwavescrushing.ogg" target="_blank" rel="noopener noreferrer">Luftrum — Oceanwavescrushing</a> · <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener noreferrer">CC BY 3.0</a></span>
+        <span class="sound-error" role="status" hidden>Audio unavailable. Please try again.</span>
+      </div>
     </div>
   </section>
 </main>
+
+<script>
+  const audio = document.querySelector<HTMLAudioElement>("#ocean-audio");
+  const button = document.querySelector<HTMLButtonElement>(".sound-toggle");
+  const label = button?.querySelector<HTMLElement>(".sound-label");
+  const state = button?.querySelector<HTMLElement>(".sound-state");
+  const error = document.querySelector<HTMLElement>(".sound-error");
+  if (audio && button && label && state) {
+    audio.volume = 0.25;
+    const sync = () => {
+      const playing = !audio.paused && !audio.ended;
+      button.setAttribute("aria-pressed", String(playing));
+      button.setAttribute("aria-label", playing ? "Pause ocean sounds" : "Play ocean sounds");
+      label.textContent = playing ? "Pause ocean sounds" : "Listen to the ocean";
+      state.textContent = playing ? "On" : "Off";
+    };
+    button.addEventListener("click", async () => {
+      if (error) error.hidden = true;
+      if (!audio.paused) { audio.pause(); return; }
+      try {
+        if (audio.error) audio.load();
+        await audio.play();
+      } catch {
+        if (error && audio.paused) error.hidden = false;
+      }
+      sync();
+    });
+    audio.addEventListener("play", sync);
+    audio.addEventListener("pause", sync);
+    audio.addEventListener("ended", sync);
+    audio.addEventListener("error", () => { if (error) error.hidden = false; sync(); });
+    window.addEventListener("pagehide", () => audio.pause());
+    sync();
+  }
+</script>
 
 <style>
   .home {
@@ -200,6 +250,15 @@ const backgroundStyle = `--bg-small: url('${background.src}'); --bg-large: url('
   .primary-action:hover { background: #365477; }
   .secondary-action { background: rgba(251,252,248,.72); color: #1a2744; }
   .secondary-action:hover { background: #e4edf8; }
+  .ocean-sound { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; margin-top: 19px; }
+  .sound-toggle { display: inline-flex; align-items: center; gap: 9px; padding: 6px 10px 6px 0; min-height: 44px; font: inherit; font-size: 13px; font-weight: 700; color: #365477; border: 0; background: transparent; cursor: pointer; }
+  .sound-toggle:hover { color: #1a2744; }
+  .sound-toggle:focus-visible { outline: 2px solid #365477; outline-offset: 3px; border-radius: 6px; }
+  .sound-state { font-size: 10px; line-height: 1; text-transform: uppercase; letter-spacing: .06em; border-radius: 999px; padding: 4px 7px; background: rgba(108,136,173,.13); color: #46566b; }
+  .sound-toggle[aria-pressed="true"] .sound-state { background: #365477; color: white; }
+  .sound-credit { font-size: 10px; color: #58677b; line-height: 1.5; }
+  .sound-credit a { text-decoration: underline; text-underline-offset: 2px; }
+  .sound-error { font-size: 12px; color: #46566b; }
   @media (max-width: 430px) {
     .hero-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .hero-actions a { padding-inline: 10px; min-height: 48px; }
