@@ -1,5 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { responsivePhoto } from "../lib/photos";
+import portrait from "../assets/photos/profile.jpg";
+import scenery from "../assets/photos/links-bg.jpg";
+const avatar = await responsivePhoto(portrait, [160, 320], 80);
+const background = await responsivePhoto(scenery, [640, 1440], 68);
+const backgroundStyle = `--bg-small: url('${background.src}'); --bg-large: url('${background.large}');`;
 ---
 
 <Layout
@@ -8,11 +14,11 @@ import Layout from "../layouts/Layout.astro";
 >
   <main class="links-page">
     <!-- 背景圖片：請放在 public/links-bg.jpg -->
-    <div class="bg-image" aria-hidden="true"></div>
+    <div class="bg-image" style={backgroundStyle} aria-hidden="true"></div>
     <div class="bg-overlay" aria-hidden="true"></div>
 
     <section class="profile">
-      <img class="avatar" src="/profile.jpg" alt="Portrait of Ralf Tsai" width="148" height="148" decoding="async" />
+      <img class="avatar" src={avatar.src} srcset={avatar.srcset} sizes="(max-width: 720px) 128px, 148px" alt="Portrait of Ralf Tsai" width="148" height="148" decoding="async" />
 
       <h1>Let’s Connect</h1>
 
@@ -119,14 +125,14 @@ import Layout from "../layouts/Layout.astro";
     z-index: -3;
 
     /* 背景圖路徑：圖片請放在 public/links-bg.jpg */
-    background-image: url("/links-bg.jpg");
+    background-image: var(--bg-large);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
     /* 背景圖清晰度與存在感 */
     opacity: 0.9;
-    filter: brightness(0.95) contrast(0.9) saturate(0.75);
+    background-color: #e4eaf0;
     transform: scale(1.03);
   }
 
@@ -168,7 +174,7 @@ import Layout from "../layouts/Layout.astro";
     object-fit: cover;
     object-position: center;
     border-radius: 999px;
-    border: 5px solid white;
+    border: 0;
     box-shadow: 0 22px 52px rgba(26, 39, 68, 0.16);
   }
 
@@ -237,7 +243,7 @@ import Layout from "../layouts/Layout.astro";
 
     color: currentColor;
     box-shadow: 0 14px 34px rgba(26, 39, 68, 0.08);
-    backdrop-filter: blur(6px);
+    
     transition:
       background 0.18s ease,
       box-shadow 0.18s ease;
@@ -320,6 +326,7 @@ import Layout from "../layouts/Layout.astro";
 
     .bg-image {
       opacity: 0.34;
+      background-image: var(--bg-small);
       background-position: center;
     }
 

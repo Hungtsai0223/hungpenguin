@@ -1,12 +1,20 @@
+---
+import { responsivePhoto } from "../lib/photos";
+import portrait from "../assets/photos/profile.jpg";
+import ocean from "../assets/photos/sea.jpg";
+const avatar = await responsivePhoto(portrait, [320, 640], 80);
+const background = await responsivePhoto(ocean, [640, 1440, 1920], 68);
+const backgroundStyle = `--bg-small: url('${background.src}'); --bg-large: url('${background.large}');`;
+---
 <main class="home">
   <!-- 背景圖片：請放在 public/home-bg.jpg -->
-  <div class="home-bg" aria-hidden="true"></div>
+  <div class="home-bg" style={backgroundStyle} aria-hidden="true"></div>
 
   <!-- 霧面遮罩：讓背景圖變淡，避免搶走文字焦點 -->
   <div class="home-overlay" aria-hidden="true"></div>
 
   <section class="hero">
-    <img class="avatar" src="/profile.jpg" alt="Portrait of Ralf Tsai" width="230" height="230" fetchpriority="high" decoding="async" />
+    <img class="avatar" src={avatar.src} srcset={avatar.srcset} sizes="(max-width: 430px) 280px, (max-width: 720px) 300px, 230px" alt="Portrait of Ralf Tsai" width="230" height="230" fetchpriority="high" decoding="async" />
 
     <div class="hero-content">
       <p class="kicker">Hey!</p>
@@ -55,13 +63,13 @@
   pointer-events: none;
 
   /* 使用 public/sea.jpg 作為首頁背景 */
-  background-image: url("/sea.jpg");
+  background-image: var(--bg-large);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   opacity: 1;
-  filter: brightness(0.9) contrast(0.88) saturate(0.72);
+  background-color: #e4eaf0;
 }
 
   /* 背景上方霧面遮罩 */
@@ -113,7 +121,7 @@
     object-position: center;
 
     border-radius: 999px;
-    border: 5px solid rgba(255, 255, 255, 0.92);
+    border: 0;
     box-shadow: 0 24px 58px rgba(26, 39, 68, 0.14);
   }
 
@@ -193,8 +201,9 @@
   .secondary-action { background: rgba(251,252,248,.72); color: #1a2744; }
   .secondary-action:hover { background: #e4edf8; }
   @media (max-width: 430px) {
-    .hero-actions { gap: 8px; }
-    .hero-actions a { padding-inline: 12px; }
+    .hero-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .hero-actions a { padding-inline: 10px; min-height: 48px; }
+    .hero-actions .primary-action { grid-column: 1 / -1; }
   }
 
   /* 手機版優化 */
@@ -208,7 +217,7 @@
       grid-template-columns: 1fr;
 
       /* 手機版照片和文字之間的距離 */
-      gap: 30px;
+      gap: 24px;
 
       justify-items: center;
       text-align: left;
@@ -222,14 +231,14 @@
       width: min(78vw, 300px);
       height: min(78vw, 300px);
 
-      border-width: 6px;
+      border-width: 0;
       box-shadow: 0 28px 64px rgba(26, 39, 68, 0.16);
     }
 
     .hero-content {
       width: 100%;
       max-width: 520px;
-      padding: 0 22px;
+      padding: 0 8px;
       box-sizing: border-box;
     }
 
@@ -269,6 +278,7 @@
     .home-bg {
       /* 手機版背景圖更淡，避免干擾文字 */
       opacity: 0.18;
+      background-image: var(--bg-small);
       background-position: center;
     }
 
@@ -286,8 +296,8 @@
   /* 更小手機，例如 iPhone SE */
   @media screen and (max-width: 430px) {
     .avatar {
-      width: min(82vw, 280px);
-      height: min(82vw, 280px);
+      width: min(69vw, 260px);
+      height: min(69vw, 260px);
     }
 
     .kicker {

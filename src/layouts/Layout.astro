@@ -1,4 +1,7 @@
 ---
+import { responsivePhoto } from "../lib/photos";
+import penguin from "../assets/photos/penguin-icon.png";
+const logo = await responsivePhoto(penguin, [72, 144], 88);
 const {
   title = "Ralf Tsai",
   description = "Personal website of Chun-Hung Tsai.",
@@ -21,7 +24,7 @@ const navigation = [ { href: "/", label: "Home" }, { href: "/about", label: "Abo
     <div class="site-shell">
       <header class="site-header">
         <a class="brand" href="/" aria-label="Ralf Tsai Home">
-          <img src="/penguin-icon.png" alt="Ralf Tsai icon" width="70" height="70" decoding="async" />
+          <img src={logo.src} srcset={logo.srcset} sizes="70px" alt="Ralf Tsai icon" width="70" height="70" decoding="async" />
         </a>
 
         <nav class="nav-links" aria-label="Main navigation">
@@ -52,16 +55,16 @@ const navigation = [ { href: "/", label: "Home" }, { href: "/about", label: "Abo
         document.querySelectorAll<HTMLImageElement>("main img").forEach((img) => {
           if (!img.complete) {
             img.addEventListener("load", () => {
-              img.animate([{ opacity: .55 }, { opacity: 1 }], { duration: 320, easing: "ease-out" });
+              if (typeof img.animate === "function") img.animate([{ opacity: .72 }, { opacity: 1 }], { duration: 260, easing: "ease-out" });
             }, { once: true });
           }
         });
-        if ("IntersectionObserver" in window) {
+        if ("IntersectionObserver" in window && typeof Element.prototype.animate === "function") {
           const observer = new IntersectionObserver((entries) => {
             for (const entry of entries) {
               if (!entry.isIntersecting) continue;
               entry.target.animate(
-                [{ transform: "translateY(8px)", opacity: .88 }, { transform: "translateY(0)", opacity: 1 }],
+                [{ transform: "translateY(6px)", opacity: .92 }, { transform: "translateY(0)", opacity: 1 }],
                 { duration: 420, easing: "ease-out" }
               );
               observer.unobserve(entry.target);
@@ -93,6 +96,7 @@ const navigation = [ { href: "/", label: "Home" }, { href: "/about", label: "Abo
   }
 
   .site-shell {
+    min-height: 100svh;
     width: min(100% - 48px, 960px);
     margin: 0 auto;
     padding: 34px 0 46px;
@@ -218,7 +222,7 @@ const navigation = [ { href: "/", label: "Home" }, { href: "/about", label: "Abo
       align-items: flex-start;
       flex-direction: column;
       gap: 10px;
-      margin-bottom: 36px;
+      margin-bottom: 28px;
     }
 
     .nav-links {
@@ -228,7 +232,9 @@ const navigation = [ { href: "/", label: "Home" }, { href: "/about", label: "Abo
       flex-wrap: wrap;
     }
 
-    .nav-links a { font-size: 17px; padding-inline: 8px; }
+    .nav-links a { font-size: 16px; padding-inline: 5px; }
+    .site-footer { margin-top: 48px; }
+    .footer-links a { padding-block: 8px; }
 
     .site-footer {
       flex-direction: column;
