@@ -342,8 +342,8 @@ const backgroundStyle = `--bg-small: url('${background.src}'); --bg-large: url('
     }
 
     .home-bg {
-      /* 手機版背景圖更淡，避免干擾文字 */
-      opacity: 0.18;
+      /* 手機版海浪：主要呈現在頭貼周圍 */
+      opacity: 1;
       background-image: var(--bg-small);
       background-position: center;
     }
@@ -352,10 +352,20 @@ const backgroundStyle = `--bg-small: url('${background.src}'); --bg-large: url('
       background:
         linear-gradient(
           180deg,
-          rgba(251, 252, 248, 0.9) 0%,
-          rgba(251, 252, 248, 0.82) 52%,
-          rgba(251, 252, 248, 0.9) 100%
+          rgba(251, 252, 248, 0.94) 0%,
+          rgba(251, 252, 248, 0.92) 10%,
+          rgba(251, 252, 248, 0.75) 25%,
+          rgba(251, 252, 248, 0.78) 34%,
+          rgba(251, 252, 248, 0.91) 46%,
+          rgba(251, 252, 248, 0.97) 56%,
+          rgba(251, 252, 248, 0.97) 100%
         );
+    }
+
+    .hero-content {
+      /* 捲動時仍保持文字區的對比 */
+      background: linear-gradient(180deg, rgba(251, 252, 248, 0.58), rgba(251, 252, 248, 0.82));
+      border-radius: 12px;
     }
   }
 
